@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Project</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #1a1a1a;
+        color: white;
+        position: relative;
+      }
+
+      nav {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        width: 100px;
+      }
+
+      .nav-toggle {
+        font-size: 24px;
+        color: white;
+        display: none;
+        background: none;
+        border: none;
+      }
+
+      .links-container ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .links-container li {
+        margin-left: 20px;
+      }
+
+      .links-container a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+      }
+
+      .links-container a:hover {
+        color: #ffeb3b;
+      }
+
+      .banner {
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./banner-image.jpg') center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .banner h1 {
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .banner p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .btn-white {
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: background 0.3s ease;
+      }
+
+      .btn-white:hover {
+        background-color: white;
+        color: #1a1a1a;
+      }
+
+      .section {
+        padding: 60px 0;
+        background-color: #f4f4f4;
+      }
+
+      .title h2 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .title span {
+        color: #ffeb3b;
+      }
+
+      .about-content, .services-content, .tours-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      footer p {
+        font-size: 1rem;
+      }
+
+      .top-link {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: #ffeb3b;
+        color: #1a1a1a;
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 24px;
+        display: none;
+        transition: background 0.3s ease;
+      }
+
+      .top-link:hover {
+        background: #1a1a1a;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .nav-toggle {
+          display: block;
+        }
+
+        .links-container ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          padding: 20px 0;
+        }
+
+        .links-container li {
+          text-align: center;
+          margin: 10px 0;
+        }
+
+        .nav-toggle.active + .links-container ul {
+          display: flex;
+        }
+      }
+
+      /* Section Backgrounds */
+      #about {
+        background: #caccca; /* Green */
+      }
+
+      #services {
+        background: #bbbbb9; /* Yellow */
+      }
+
+      #tours {
+        background: #bfbfc0; /* Light Purple */
+      }
+
+      /* Scroll Animations */
+      .section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="home">
+      <!-- navbar -->
+      <nav id="nav">
+        <div class="nav-center">
+          <!-- nav header -->
+          <div class="nav-header">
+            <img src="./logo.svg" class="logo" alt="logo" />
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <!-- links -->
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="#home" class="scroll-link">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="scroll-link">About</a>
+              </li>
+              <li>
+                <a href="#services" class="scroll-link">Services</a>
+              </li>
+              <li>
+                <a href="#tours" class="scroll-link">Tours</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- banner -->
+      <div class="banner">
+        <div class="container">
+          <h1>Scroll Project</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas eos
+            neque sunt in? Id, necessitatibus quos quisquam distinctio
+            laudantium fugiat?
+          </p>
+          <a href="#tours" class="scroll-link btn btn-white">Explore Tours</a>
+        </div>
+      </div>
+    </header>
+    <!-- about -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="title">
+          <h2>About Us</h2>
+        </div>
+        <div class="about-content">
+          <p>
+            We are a leading travel agency offering exciting tours and adventures to some of the most beautiful and unexplored destinations. Our goal is to provide unforgettable travel experiences that enrich our clients' lives, offering them the opportunity to explore new cultures, meet new people, and create lasting memories.
+          </p>
+          <p>
+            With over 10 years of experience in the travel industry, we have a team of expert tour guides and travel specialists who are passionate about creating personalized travel itineraries that suit every traveler’s needs and preferences. Whether you're looking for an adventure, relaxation, or cultural exploration, we have something for everyone.
+          </p>
+          <p>
+            Join us and discover the world like never before!
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- services -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="title">
+          <h2>Our Services</h2>
+        </div>
+        <div class="services-content">
+          <p>
+            We offer a wide range of services designed to enhance your travel experience. From personalized itineraries to group tours, we have something for every kind of traveler.
+          </p>
+          <ul>
+            <li>Adventure Tours</li>
+            <li>Cultural Exploration</li>
+            <li>Luxury Vacations</li>
+            <li>Group Travel Packages</li>
+            <li>Eco-friendly Travel Options</li>
+          </ul>
+          <p>
+            Whether you're traveling solo or with a group, our services are designed to make your journey comfortable, exciting, and memorable. We aim to provide you with the best travel experiences possible.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- tours -->
+    <section id="tours" class="section">
+      <div class="container">
+        <div class="title">
+          <h2>Featured Tours</h2>
+        </div>
+        <div class="tours-content">
+          <p>
+            Explore some of our most popular and exciting tours that will take you to breathtaking destinations around the world.
+          </p>
+          <ul>
+            <li>Safari Adventure in Africa</li>
+            <li>Cultural Tour of Europe</li>
+            <li>Beach Paradise in the Caribbean</li>
+            <li>Mountain Trekking in the Himalayas</li>
+            <li>Desert Expedition in the Middle East</li>
+          </ul>
+          <p>
+            For more information about each tour, feel free to reach out to us or check out our detailed itineraries.
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2024 Scroll Project. All rights reserved.</p>
+    </footer>
+    <a href="#home" class="top-link">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+      // Show/hide scroll to top link
+      const topLink = document.querySelector('.top-link');
+      window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 300) {
+          topLink.style.display = 'block';
+        } else {
+          topLink.style.display = 'none';
+        }
+      });
+
+      // Toggle mobile navigation
+      const navToggle = document.querySelector('.nav-toggle');
+      navToggle.addEventListener('click', function () {
+        navToggle.classList.toggle('active');
+        const linksContainer = document.querySelector('.links-container ul');
+        linksContainer.classList.toggle('show');
+      });
+
+      // Scroll animations
+      const sections = document.querySelectorAll('.section');
+      function handleScroll() {
+        sections.forEach(function (section) {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop <= window.innerHeight * 0.75) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', handleScroll);
+      handleScroll();
+    </script>
+  </body>
+</html>
